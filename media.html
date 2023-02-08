@@ -20,13 +20,13 @@
  -->
   
 <style>
-  @media only screen and (max-width: 600px) {
+  @media (max-width: 600px) {
     h1 {
       color: red;
     }
   }
 
-  @media only screen and (min-width: 601px) {
+  @media (min-width: 601px) {
     h1 {
       color: wheat;
     }
@@ -35,6 +35,9 @@
   .flex-container {
   display: flex;
   flex-wrap: nowrap;	/* Other options: wrap */
+  flex-direction: column;
+  flex-flow: row wrap;
+  justify-content: center;
   background-color: darkblue;
   }
 
@@ -46,9 +49,6 @@
   line-height: 75px;
   font-size: 30px;
  }
-
-
-
 </style>
 
 </head>
