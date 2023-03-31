@@ -39,7 +39,21 @@ var urlsToCache = [
   '/images/example-work05.jpg',
   '/images/example-work06.jpg',
   '/images/example-work08.jpg',
-  '/images/example-work09.jpg'
+  '/images/example-work09.jpg',
+  '/images/logo (144x144).png',
+  '/images/logo (72x72).png',
+  '/images/logo (96x96).png',
+  '/images/logo (128x128).png',
+  '/Tutorial/step05-individual-pages/about.html',
+  '/Tutorial/step05-individual-pages/blog.html',
+  '/Tutorial/step05-individual-pages/contact.html',
+  '/Tutorial/step05-individual-pages/index.html',
+  '/Tutorial/step05-individual-pages/portfolio-example01.html',
+  '/Tutorial/step01-initial-HTML-setup.html',
+  '/Tutorial/step02-MDL-layout-component.html',
+  '/Tutorial/step03-the-grid-component.html',
+  '/Tutorial/step04-customising-the-layout.html',
+  '/Tutorial/styles.css'
 ];
 
 
