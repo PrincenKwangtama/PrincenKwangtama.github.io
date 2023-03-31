@@ -5,8 +5,13 @@ const CACHE_NAME = 'portfolio-cache-v1';
 const urlsToCache = [
   '/',
   '/index.html',
-  '/css/styles.css',
-  '/js/main.js'
+  '/about.html',
+  '/contact.html',
+  '/blog.html',
+  '/portfolio-example01.html',
+  '/styles.css',
+  '/js/main.js',
+  '/images/*'
 ];
 
 // Fetch all images in the images/ directory
