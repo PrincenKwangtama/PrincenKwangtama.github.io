@@ -98,21 +98,6 @@ self.addEventListener('fetch', function(event) {
   );
 });
 
-// Aktifkan service worker dan hapus cache yang sudah kadaluarsa
-self.addEventListener('activate', event => {
-  event.waitUntil(
-    caches.keys().then(cacheNames => {
-      return Promise.all(
-        cacheNames.map(cacheName => {
-          if (cacheName !== CACHE_NAME) {
-            return caches.delete(cacheName);
-          }
-        })
-      );
-    })
-  );
-});
-
 
 
 
