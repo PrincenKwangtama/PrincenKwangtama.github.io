@@ -14,29 +14,13 @@ const urlsToCache = [
   '/images/*'
 ];
 
-// Fetch all images in the images/ directory
-fetch('/images/')
-  .then(function(response) {
-    return response.text();
-  })
-  .then(function(html) {
-    // Create a new DOM element to parse the HTML
-    const parser = new DOMParser();
-    const doc = parser.parseFromString(html, 'text/html');
-    // Get all <a> tags with an href attribute that ends in .jpg, .jpeg, .png, or .gif
-    const images = doc.querySelectorAll('a[href$=".jpg"], a[href$=".jpeg"], a[href$=".png"], a[href$=".gif"]');
-    // Add the URL of each image to the urlsToCache array
-    images.forEach(function(image) {
-      urlsToCache.push('/images/' + image.getAttribute('href'));
-    });
-  });
-
 // Install service worker dan menambahkan file yang akan di-cache
 self.addEventListener('install', event => {
   event.waitUntil(
     caches.open(CACHE_NAME)
       .then(cache => cache.addAll(urlsToCache))
   );
+  return self.clients.claim();
 });
 
 // Aktifkan service worker dan hapus cache yang sudah kadaluarsa
