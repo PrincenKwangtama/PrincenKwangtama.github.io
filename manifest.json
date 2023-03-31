@@ -4,22 +4,22 @@
     "description": "My Portfolio Description",
     "icons": [
       {
-        "src": "images/icon-72x72.png",
+        "src": "images/about-header.jpg",
         "sizes": "72x72",
         "type": "image/png"
       },
       {
-        "src": "images/icon-96x96.png",
+        "src": "images/contact-image.jpg",
         "sizes": "96x96",
         "type": "image/png"
       },
       {
-        "src": "images/icon-128x128.png",
+        "src": "images/example-work05.jpg",
         "sizes": "128x128",
         "type": "image/png"
       },
       {
-        "src": "images/icon-144x144.png",
+        "src": "images/portfolio-example-02.jpg",
         "sizes": "144x144",
         "type": "image/png"
       }
