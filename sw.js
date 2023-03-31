@@ -1,52 +1,53 @@
-// CACHE_NAME merupakan nama cache yang akan digunakan
-const CACHE_NAME = 'portfolio-cache-v1';
-
-// Daftar file yang akan di-cache
-const urlsToCache = [
+var CACHE_NAME = 'first-app';
+var urlsToCache = [
   '/',
   '/index.html',
   '/about.html',
-  '/contact.html',
   '/blog.html',
+  '/contact.html',
   '/portfolio-example01.html',
   '/styles.css',
-  '/js/main.js',
-  '/images/*.jpg'
+  '/app.js',
+  '/images/*',
+  '/Tutorial/*'
 ];
 
-// Install service worker dan menambahkan file yang akan di-cache
-self.addEventListener('install', event => {
+self.addEventListener('install', function(event) {
   event.waitUntil(
     caches.open(CACHE_NAME)
-      .then(cache => cache.addAll(urlsToCache))
-  );
-  return self.clients.claim();
-});
-
-// Aktifkan service worker dan hapus cache yang sudah kadaluarsa
-self.addEventListener('activate', event => {
-  event.waitUntil(
-    caches.keys().then(cacheNames => {
-      return Promise.all(
-        cacheNames.map(cacheName => {
-          if (cacheName !== CACHE_NAME) {
-            return caches.delete(cacheName);
-          }
-        })
-      );
-    })
+      .then(function(cache) {
+        console.log('Opened cache');
+        return cache.addAll(urlsToCache);
+      })
   );
 });
 
-// Menangani permintaan dari cache terlebih dahulu sebelum mengambil dari jaringan
-self.addEventListener('fetch', event => {
+self.addEventListener('fetch', function(event) {
   event.respondWith(
     caches.match(event.request)
-      .then(response => {
+      .then(function(response) {
         if (response) {
           return response;
         }
-        return fetch(event.request);
+
+        var fetchRequest = event.request.clone();
+
+        return fetch(fetchRequest).then(
+          function(response) {
+            if(!response || response.status !== 200 || response.type !== 'basic') {
+              return response;
+            }
+
+            var responseToCache = response.clone();
+
+            caches.open(CACHE_NAME)
+              .then(function(cache) {
+                cache.put(event.request, responseToCache);
+              });
+
+            return response;
+          }
+        );
       })
   );
 });
